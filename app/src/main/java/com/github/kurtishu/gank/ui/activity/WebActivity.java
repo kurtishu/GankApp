@@ -28,15 +28,18 @@ import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.github.kurtishu.gank.R;
 import com.github.kurtishu.gank.db.DbHelper;
+import com.github.kurtishu.gank.manager.CollectionManager;
 import com.github.kurtishu.gank.model.entity.GankEntity;
 import com.github.kurtishu.gank.presenter.activity.WebPresenter;
 import com.github.kurtishu.gank.ui.view.activity.IWebView;
 import com.github.kurtishu.gank.wedgit.ProgressWebView;
 
 import butterknife.Bind;
+import rx.Subscriber;
 
 public class WebActivity extends BaseActivity<WebPresenter> implements IWebView {
 
@@ -82,9 +85,25 @@ public class WebActivity extends BaseActivity<WebPresenter> implements IWebView 
                 onBackPressed();
                 break;
             case R.id.nav_collect:
-                GankEntity entity = new GankEntity();
-                entity.setUrl(getIntent().getStringExtra(EXTRA_URL));
-                DbHelper.saveCollection(entity);
+                CollectionManager.getInstance().saveCollection(new Subscriber<Boolean>() {
+
+                    @Override
+                    public void onCompleted() {
+                        Toast.makeText(WebActivity.this,
+                                R.string.tip_add_collection_success, Toast.LENGTH_LONG).show();
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Toast.makeText(WebActivity.this,
+                                R.string.tip_add_collection_fail, Toast.LENGTH_LONG).show();
+                    }
+
+                    @Override
+                    public void onNext(Boolean aBoolean) {
+
+                    }
+                });
                 break;
         }
         return true;

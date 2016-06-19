@@ -96,8 +96,8 @@ public class DbHelper {
         });
     }
 
-    public static void saveCollection(final GankEntity entity) {
-        Observable.create(new Observable.OnSubscribe<Boolean>() {
+    public static Observable<Boolean> saveCollection(final GankEntity entity) {
+       return Observable.create(new Observable.OnSubscribe<Boolean>() {
             @Override
             public void call(Subscriber<? super Boolean> subscriber) {
                 try {
@@ -111,24 +111,7 @@ public class DbHelper {
                     subscriber.onError(e);
                 }
             }
-        }).subscribeOn(Schedulers.io())
-                .unsubscribeOn(Schedulers.io())
-                .subscribe(new Subscriber<Boolean>() {
-                    @Override
-                    public void onCompleted() {
-                        Log.i("DbHelper", "onCompleted");
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        Log.i("DbHelper", "saveCollection onError" + e.getMessage());
-                    }
-
-                    @Override
-                    public void onNext(Boolean aBoolean) {
-                        Log.i("DbHelper", "saveCollection" + aBoolean);
-                    }
-                });
+        }).subscribeOn(Schedulers.io()).unsubscribeOn(Schedulers.io());
     }
 
     public static Observable<List<Collection>> getCollections(final int page) {

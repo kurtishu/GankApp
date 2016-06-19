@@ -49,8 +49,10 @@ public abstract class CommonAdapter<T> extends BaseAdapter {
     }
 
     public void addDatas(List<T> datas) {
-        mDatas.clear();
-        mDatas = datas;
+       if (null == datas) return;
+        if (!mDatas.containsAll(datas)) {
+            mDatas.addAll(datas);
+        }
     }
 
     @Override
@@ -77,7 +79,7 @@ public abstract class CommonAdapter<T> extends BaseAdapter {
 
     }
 
-    public abstract void convert(ViewHolder helper, T item);
+    public abstract void convert(ViewHolder holder, T item);
 
     private ViewHolder getViewHolder(int position, View convertView,
                                      ViewGroup parent) {

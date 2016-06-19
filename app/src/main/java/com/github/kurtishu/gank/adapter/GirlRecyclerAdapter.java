@@ -30,6 +30,7 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.github.kurtishu.gank.R;
+import com.github.kurtishu.gank.manager.CollectionManager;
 import com.github.kurtishu.gank.model.entity.GankEntity;
 import com.github.kurtishu.gank.ui.activity.ImageViewerActivity;
 
@@ -77,6 +78,7 @@ public class GirlRecyclerAdapter extends RecyclerView.Adapter<GirlRecyclerAdapte
             holder.picImage.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    CollectionManager.getInstance().setmEntity(gank);
                     Intent intent = new Intent(context, ImageViewerActivity.class);
                     intent.putExtra("url", gank.getUrl());
                     context.startActivity(intent);

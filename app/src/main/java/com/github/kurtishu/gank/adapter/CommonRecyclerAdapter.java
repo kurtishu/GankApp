@@ -31,6 +31,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.github.kurtishu.gank.R;
+import com.github.kurtishu.gank.manager.CollectionManager;
 import com.github.kurtishu.gank.model.entity.GankEntity;
 import com.github.kurtishu.gank.ui.activity.WebActivity;
 
@@ -80,6 +81,7 @@ public class CommonRecyclerAdapter extends RecyclerView.Adapter<CommonRecyclerAd
             holder.mContentLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    CollectionManager.getInstance().setmEntity(gank);
                     WebActivity.gotoWebActivity(context, gank.getUrl(), gank.getDesc());
                 }
             });

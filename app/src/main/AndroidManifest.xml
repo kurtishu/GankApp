@@ -56,7 +56,7 @@
             android:value="${CHANNEL_VALUE}" />
 
         <meta-data android:name="AA_DB_NAME" android:value="GankApp.db" />
-        <meta-data android:name="AA_DB_VERSION" android:value="2" />
+        <meta-data android:name="AA_DB_VERSION" android:value="3" />
 
 
     </application>

@@ -41,14 +41,14 @@ public class GankDataConverter {
         gank.publishedTime = entity.getPublishedAt();
         gank.url = entity.getUrl();
         gank.who = entity.getWho();
-        gank.gankId = entity.get_id();
+        gank.id = entity.get_id();
 
         return gank;
     }
 
     public static GankEntity dbModel2Entity(Gank gank) {
         GankEntity entity = new GankEntity();
-        entity.set_id(gank.gankId);
+        entity.set_id(gank.id);
         entity.setDesc(gank.desc);
         entity.setWho(gank.who);
         entity.setUrl(gank.url);
@@ -75,7 +75,11 @@ public class GankDataConverter {
 
     public static Collection entity2CollectionModel(GankEntity entity) {
         Collection collection = new Collection();
-        collection.gank = entity2DbModel(entity);
+        collection.category = entity.getType();
+        collection.desc = entity.getDesc();
+        collection.publishedTime = entity.getPublishedAt();
+        collection.url = entity.getUrl();
+        collection.who = entity.getWho();
         collection.id = entity.get_id();
         collection.collectionTime = System.currentTimeMillis();
         return collection;

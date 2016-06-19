@@ -27,15 +27,23 @@
     android:layout_height="wrap_content"
     android:layout_width="match_parent">
 
+    <ImageView
+        android:id="@+id/fuli_imageview"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginRight="10dp"/>
+
     <TextView
         style="@style/text_gray_19"
         android:id="@+id/desc_text_view"
         android:layout_marginLeft="2dp"
+        android:layout_toRightOf="@id/fuli_imageview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
     <LinearLayout
         android:layout_below="@id/desc_text_view"
+        android:layout_toRightOf="@id/fuli_imageview"
         android:orientation="horizontal"
         android:layout_marginTop="5dp"
         android:gravity="center_vertical"

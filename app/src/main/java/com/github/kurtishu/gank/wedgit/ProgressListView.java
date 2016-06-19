@@ -207,7 +207,8 @@ public class ProgressListView extends RelativeLayout {
             headerView.setLayoutParams(new LayoutParams(DensityUtil.dip2px(getContext(), 80), LayoutParams.WRAP_CONTENT));
             headerView.setBackgroundResource(R.drawable.bg_selection_header);
             ((TextView)headerView.findViewById(R.id.section_header_text)).setTextColor(Color.WHITE);
-            return headerView;
+			headerView.setVisibility(INVISIBLE);
+			return headerView;
         }
 
         @Override

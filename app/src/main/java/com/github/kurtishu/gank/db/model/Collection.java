@@ -36,9 +36,32 @@ public class Collection extends Model {
     @Column(name = "_id", unique = true, onUniqueConflict = Column.ConflictAction.REPLACE)
     public String id;
 
-    @Column(name = "ganks")
-    public Gank gank;
+    @Column(name = "desc")
+    public String desc;
+
+    @Column(name = "who")
+    public String who;
+
+    @Column(name = "category")
+    public String category;
+
+    @Column(name = "url")
+    public String url;
+
+    @Column(name = "publishedAt")
+    public String publishedTime;
 
     @Column(name = "collection_time")
     public long collectionTime;
+
+    @Override
+    public boolean equals(Object obj) {
+        Collection collection = (Collection) obj;
+        if (collection != null) {
+            if (null != id && id.equals(collection.id)) {
+                return true;
+            }
+        }
+        return super.equals(obj);
+    }
 }

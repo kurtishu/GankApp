@@ -28,13 +28,16 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.github.kurtishu.gank.R;
+import com.github.kurtishu.gank.manager.CollectionManager;
 import com.github.kurtishu.gank.presenter.activity.ImageViewerPresenter;
 import com.github.kurtishu.gank.ui.view.activity.IImageDetailView;
 
 import butterknife.Bind;
+import rx.Subscriber;
 import uk.co.senab.photoview.PhotoView;
 import uk.co.senab.photoview.PhotoViewAttacher;
 
@@ -92,6 +95,27 @@ public class ImageViewerActivity extends BaseActivity<ImageViewerPresenter> impl
         switch (item.getItemId()){
             case android.R.id.home:
                 onBackPressed();
+                break;
+            case R.id.nav_collect:
+                CollectionManager.getInstance().saveCollection(new Subscriber<Boolean>() {
+
+                    @Override
+                    public void onCompleted() {
+                        Toast.makeText(ImageViewerActivity.this,
+                                R.string.tip_add_collection_success, Toast.LENGTH_LONG).show();
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Toast.makeText(ImageViewerActivity.this,
+                                R.string.tip_add_collection_fail, Toast.LENGTH_LONG).show();
+                    }
+
+                    @Override
+                    public void onNext(Boolean aBoolean) {
+
+                    }
+                });
                 break;
         }
         return true;

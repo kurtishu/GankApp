@@ -29,4 +29,7 @@
     <string name="title_daily">天天干货</string>
     <string name="title_category">分类干货</string>
     <string name="title_mine">我的干货</string>
+
+    <string name="tip_add_collection_success">收藏成功</string>
+    <string name="tip_add_collection_fail">收藏失败，请重试！</string>
 </resources>

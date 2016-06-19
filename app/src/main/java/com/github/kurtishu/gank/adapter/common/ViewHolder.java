@@ -30,6 +30,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.github.kurtishu.gank.R;
+
 /**
  * Created by kurtishu on 6/17/16.
  */
@@ -112,8 +115,15 @@ public class ViewHolder {
         return this;
     }
 
+    public ViewHolder setImageUrl(int viewId, String url) {
+        ImageView view = getView(viewId);
+        Glide.with(view.getContext()).load(url).placeholder(R.mipmap.ic_holder)
+                .crossFade().into(view);
+
+        return this;
+    }
+
     public int getPosition() {
         return mPosition;
     }
-
 }

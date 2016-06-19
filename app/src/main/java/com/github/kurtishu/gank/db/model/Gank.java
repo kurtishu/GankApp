@@ -34,7 +34,7 @@ import com.activeandroid.annotation.Table;
 public class Gank extends Model {
 
     @Column(name = "_id" , unique = true, onUniqueConflict = Column.ConflictAction.REPLACE)
-    public String gankId;
+    public String id;
 
     @Column(name = "desc")
     public String desc;
