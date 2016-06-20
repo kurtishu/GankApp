@@ -36,7 +36,7 @@
         app:footer="@layout/meituan_footer">
 
         <android.support.v7.widget.RecyclerView
-            android:background="#ffffff"
+            android:background="?text_color_01"
             android:id="@+id/girl_recyclerview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>

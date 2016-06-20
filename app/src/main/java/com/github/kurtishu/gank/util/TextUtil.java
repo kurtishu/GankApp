@@ -11,7 +11,7 @@ import android.text.style.URLSpan;
  */
 public class TextUtil {
 
-    public static final CharSequence getInfo() {
+    public static CharSequence getInfo() {
         SpannableStringBuilder builder = new SpannableStringBuilder();
         int start = 0;
         builder.append("Gank.IO Android 客户端\n");
@@ -24,7 +24,7 @@ public class TextUtil {
         builder.append("感谢 Gank.io 提供的数据支持");
         builder.append("\n");
         start = builder.length();
-        builder.append("power by kurtishu");
+        builder.append("powered by kurtishu");
         builder.setSpan(new StyleSpan(Typeface.ITALIC), start, builder.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         return builder;
     }

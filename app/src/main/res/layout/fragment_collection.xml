@@ -38,7 +38,7 @@
         app:footer="@layout/meituan_footer">
 
         <ListView
-            android:background="#ffffff"
+            android:background="?text_color_01"
             android:id="@+id/collction_list_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
