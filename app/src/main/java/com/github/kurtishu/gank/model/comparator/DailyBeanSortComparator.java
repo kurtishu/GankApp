@@ -20,7 +20,7 @@
  *
  */
 
-package com.github.kurtishu.gank.model.converter;
+package com.github.kurtishu.gank.model.comparator;
 
 import com.github.kurtishu.gank.model.bean.DailyBean;
 
@@ -29,7 +29,7 @@ import java.util.Comparator;
 /**
  * Created by kurtishu on 6/15/16.
  */
-public class SortComparator implements Comparator<DailyBean> {
+public class DailyBeanSortComparator implements Comparator<DailyBean> {
 
     @Override
     public int compare(DailyBean lhs, DailyBean rhs) {

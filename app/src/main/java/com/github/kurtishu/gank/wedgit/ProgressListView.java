@@ -205,9 +205,7 @@ public class ProgressListView extends RelativeLayout {
             //Header selection layout
             View headerView = LayoutInflater.from(getContext()).inflate(R.layout.list_section_header, null);
             headerView.setLayoutParams(new LayoutParams(DensityUtil.dip2px(getContext(), 80), LayoutParams.WRAP_CONTENT));
-            headerView.setBackgroundResource(R.drawable.bg_selection_header);
             ((TextView)headerView.findViewById(R.id.section_header_text)).setTextColor(Color.WHITE);
-			headerView.setVisibility(INVISIBLE);
 			return headerView;
         }
 
@@ -219,10 +217,8 @@ public class ProgressListView extends RelativeLayout {
             ExpandableListAdapter adapter = mExpandableListView.getExpandableListAdapter();
 			if (null != adapter && null != adapter.getGroup(firstVisibleGroupPos)) {
 				headerTextView.setText(adapter.getGroup(firstVisibleGroupPos).toString());
-                headerView.setVisibility(VISIBLE);
-			} else {
-                headerView.setVisibility(INVISIBLE);
-            }
+				headerView.setBackgroundResource(R.drawable.bg_selection_header);
+			}
         }
     };
 }

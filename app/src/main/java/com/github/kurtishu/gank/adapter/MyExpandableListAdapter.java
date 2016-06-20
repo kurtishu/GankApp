@@ -153,7 +153,7 @@ public class MyExpandableListAdapter implements ExpandableListAdapter {
         if (null != entity) {
             desTextView.setText(entity.getDesc());
             showTextView.setText(entity.getWho());
-            timeTextView.setText(entity.getPublishedAt());
+            timeTextView.setText(entity.getPublishedTime());
             if (entity.getType().equals("福利")) {
                 childImageView.setVisibility(View.VISIBLE);
                 Glide.with(mContext).load(entity.getUrl()).placeholder(R.mipmap.ic_holder)

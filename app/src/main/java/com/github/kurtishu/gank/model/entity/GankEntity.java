@@ -97,8 +97,12 @@ public class GankEntity implements Serializable {
         return desc;
     }
 
-    public String getPublishedAt() {
+    public String getPublishedTime() {
         return DateUtil.formatUTC(this.publishedAt);
+    }
+
+    public String getPublishedAt() {
+        return this.publishedAt;
     }
 
     public String getSource() {
@@ -135,6 +139,20 @@ public class GankEntity implements Serializable {
                 ", used=" + used +
                 ", who='" + who + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (null != o) {
+            GankEntity des = (GankEntity) o;
+            if (null != des) {
+                if (this._id.equals(des.get_id())) {
+                    return true;
+                }
+            }
+        }
+
+        return super.equals(o);
     }
 
 }

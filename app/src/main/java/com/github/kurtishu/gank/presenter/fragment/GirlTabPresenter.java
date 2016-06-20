@@ -23,6 +23,7 @@ package com.github.kurtishu.gank.presenter.fragment;
 import android.util.Log;
 
 import com.github.kurtishu.gank.db.DbHelper;
+import com.github.kurtishu.gank.model.comparator.GankEntitySortComparator;
 import com.github.kurtishu.gank.model.entity.GankEntity;
 import com.github.kurtishu.gank.model.entity.HttpResult;
 import com.github.kurtishu.gank.network.GankService;
@@ -30,10 +31,13 @@ import com.github.kurtishu.gank.presenter.BasePresenter;
 import com.github.kurtishu.gank.ui.view.fragment.IGirlView;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
+import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
 /**
@@ -67,6 +71,28 @@ public class GirlTabPresenter extends BasePresenter<IGirlView> {
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+                .flatMap(new Func1<HttpResult<List<GankEntity>>, Observable<HttpResult<List<GankEntity>>>>() {
+                    @Override
+                    public Observable<HttpResult<List<GankEntity>>> call(final HttpResult<List<GankEntity>> listHttpResult) {
+                        return Observable.create(new Observable.OnSubscribe<HttpResult<List<GankEntity>>>() {
+                            @Override
+                            public void call(Subscriber<? super HttpResult<List<GankEntity>>> subscriber) {
+                                try {
+                                    if (!subscriber.isUnsubscribed()) {
+                                        HttpResult<List<GankEntity>> result = listHttpResult;
+                                        List<GankEntity> entities = result.getResults();
+                                        Collections.sort(entities, new GankEntitySortComparator());
+                                        result.setResults(entities);
+                                        subscriber.onNext(result);
+                                        subscriber.onCompleted();
+                                    }
+                                } catch (Exception e) {
+                                    subscriber.onError(e);
+                                }
+                            }
+                        });
+                    }
+                })
                 .subscribe(new Subscriber<HttpResult<List<GankEntity>>>() {
 
                     @Override

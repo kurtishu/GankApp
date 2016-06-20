@@ -20,6 +20,7 @@
 
 package com.github.kurtishu.gank.ui.activity;
 
+import android.content.Intent;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
@@ -28,14 +29,15 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.github.kurtishu.gank.R;
-import com.github.kurtishu.gank.config.GankConst;
 import com.github.kurtishu.gank.model.bean.DailyBean;
 import com.github.kurtishu.gank.presenter.activity.HomePresenter;
+import com.github.kurtishu.gank.ui.dialog.InfoDialog;
 import com.github.kurtishu.gank.ui.fragment.CategoryFragment;
 import com.github.kurtishu.gank.ui.fragment.CollectionFragment;
 import com.github.kurtishu.gank.ui.fragment.DailyDataFragment;
 import com.github.kurtishu.gank.ui.fragment.GirlTabFragment;
 import com.github.kurtishu.gank.ui.view.activity.IHomeView;
+import com.github.kurtishu.gank.util.TextUtil;
 
 import java.util.List;
 
@@ -123,8 +125,12 @@ public class HomeActivity extends BaseActivity<HomePresenter> implements IHomeVi
                     selectedFragment = mCollectionFragment;
                     toolbar.setTitle(R.string.title_mine);
                     break;
+                case R.id.setting:
+                     startActivity(new Intent(HomeActivity.this, SettingsActivity.class));
+                    break;
                 case R.id.about:
-                    WebActivity.gotoWebActivity(HomeActivity.this, GankConst.URL_ABOUT, "About");
+                    InfoDialog info = InfoDialog.newInstance(getString(R.string.nav_about), TextUtil.getInfo());
+                    info.show(getSupportFragmentManager(), "about");
                     break;
                 default:
                     break;

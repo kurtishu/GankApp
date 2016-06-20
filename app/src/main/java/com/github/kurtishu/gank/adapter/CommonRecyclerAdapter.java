@@ -76,7 +76,7 @@ public class CommonRecyclerAdapter extends RecyclerView.Adapter<CommonRecyclerAd
         if (null != gank) {
             holder.mDesc.setText(gank.getDesc());
             holder.mWho.setText(gank.getWho() + "" );
-            holder.mTime.setText(gank.getPublishedAt());
+            holder.mTime.setText(gank.getPublishedTime());
 
             holder.mContentLayout.setOnClickListener(new View.OnClickListener() {
                 @Override

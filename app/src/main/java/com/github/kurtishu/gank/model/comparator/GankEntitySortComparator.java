@@ -20,30 +20,20 @@
  *
  */
 
-package com.github.kurtishu.gank.util;
+package com.github.kurtishu.gank.model.comparator;
 
-import org.joda.time.DateTime;
+import com.github.kurtishu.gank.model.entity.GankEntity;
+import com.github.kurtishu.gank.util.DateUtil;
+
+import java.util.Comparator;
 
 /**
- * Created by kurtishu on 6/17/16.
+ * Created by kurtishu on 6/15/16.
  */
-public class DateUtil {
+public class GankEntitySortComparator implements Comparator<GankEntity> {
 
-    public static String formatUTC(String utcDate) {
-        return formatUTC(utcDate, "yyyy-MM-dd hh:mm:ss");
-    }
-
-    public static String formatUTC(String utcDate, String pattern) {
-        DateTime dateTime = new DateTime(utcDate);
-        return dateTime.toString(pattern);
-    }
-
-    public static int isHeaderTime(String utc1, String utc2) {
-        if (utc1.equals(utc2)) {
-            return 0;
-        }
-        DateTime dateTime1 = new DateTime(utc1);
-        DateTime dateTime2 = new DateTime(utc2);
-       return dateTime1.isBefore(dateTime2.getMillis()) ? 1 : -1;
+    @Override
+    public int compare(GankEntity lhs, GankEntity rhs) {
+        return DateUtil.isHeaderTime(lhs.getPublishedAt(), rhs.getPublishedAt());
     }
 }

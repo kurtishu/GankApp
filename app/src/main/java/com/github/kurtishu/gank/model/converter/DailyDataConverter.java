@@ -23,6 +23,7 @@
 package com.github.kurtishu.gank.model.converter;
 
 import com.github.kurtishu.gank.model.bean.DailyBean;
+import com.github.kurtishu.gank.model.comparator.DailyBeanSortComparator;
 import com.github.kurtishu.gank.model.entity.DailyEntity;
 
 import java.util.ArrayList;
@@ -71,7 +72,7 @@ public class DailyDataConverter {
         }
 
         // Sort the result
-        SortComparator sortComparator = new SortComparator();
+        DailyBeanSortComparator sortComparator = new DailyBeanSortComparator();
         Collections.sort(dailyBeanList, sortComparator);
 
         return dailyBeanList;
