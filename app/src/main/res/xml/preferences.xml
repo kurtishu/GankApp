@@ -27,6 +27,7 @@
             android:widgetLayout="@layout/switch_layout" />
 
         <Preference
+            android:key="@string/key_clear_cache"
             android:layout="@layout/preference_item"
             android:summary="@string/summary_clear_cache"
             android:title="@string/title_clear_cache" />
@@ -36,6 +37,7 @@
         android:layout="@layout/preference_category"
         android:title="@string/title_other">
         <Preference
+            android:key="@string/key_version"
             android:layout="@layout/preference_item"
             android:summary="V 1.0"
             android:title="@string/title_version" />

@@ -56,9 +56,11 @@
     <string name="summary_save_net_mode">仅在Wi-Fi环境下才自动加载图片</string>
     <string name="title_save_net_mode">省流量模式</string>
 
+    <string name="key_clear_cache" translatable="false">clear_cache</string>
     <string name="summary_clear_cache">删除已缓存的内容及图片</string>
     <string name="title_clear_cache">清空缓存</string>
 
+    <string name="key_version" translatable="false">version</string>
     <string name="title_other">其他</string>
     <string name="title_version">检查新版本</string>
 
