@@ -63,5 +63,6 @@
     <string name="key_version" translatable="false">version</string>
     <string name="title_other">其他</string>
     <string name="title_version">检查新版本</string>
+    <string name="version" formatted="false">当前版本: %s_%s (%s)</string>
 
 </resources>

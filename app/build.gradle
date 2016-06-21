@@ -28,8 +28,9 @@ android {
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 1
-        versionName "V 1.0.0"
+        versionName "1.0.0"
         manifestPlaceholders = [CHANNEL_VALUE: "GitHub"]
+        buildConfigField "String", "GIT_REVISION", "\"${getGitVersion()}\""
     }
     buildTypes {
         release {
@@ -50,6 +51,10 @@ android {
             [CHANNEL_VALUE: "GitHub"]
         }
     }
+}
+
+def getGitVersion() {
+    return 'git rev-parse --short HEAD'.execute().text.trim()
 }
 
 dependencies {

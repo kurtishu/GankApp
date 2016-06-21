@@ -9,9 +9,9 @@ import android.preference.PreferenceScreen;
 import android.support.v4.app.Fragment;
 import android.widget.Toast;
 
+import com.github.kurtishu.gank.BuildConfig;
 import com.github.kurtishu.gank.R;
 import com.github.kurtishu.gank.model.GankTheme;
-import com.github.kurtishu.gank.util.SystemUtil;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -43,7 +43,7 @@ public class SettingFragment extends PreferenceFragment {
         });
 
         final Preference versionPref = findPreference(getString(R.string.key_version));
-        versionPref.setSummary(SystemUtil.getAppVersionName(getActivity()));
+        versionPref.setSummary(getString(R.string.version, BuildConfig.VERSION_NAME, BuildConfig.GIT_REVISION, BuildConfig.FLAVOR));
     }
 
     @Override
