@@ -28,15 +28,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 
+import com.github.kurtishu.gank.config.GankConst;
+import com.github.kurtishu.gank.model.GankTheme;
 import com.github.kurtishu.gank.presenter.BasePresenter;
 import com.umeng.analytics.MobclickAgent;
+
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 
 import butterknife.ButterKnife;
 
 /**
  * Created by kurtishu on 4/19/16.
  */
-public abstract class BaseActivity<T extends BasePresenter> extends AppCompatActivity {
+public abstract class BaseActivity<T extends BasePresenter> extends AppCompatActivity implements PropertyChangeListener {
 
     protected String TAG = this.getClass().getSimpleName();
     protected T mPresenter;
@@ -44,6 +49,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setThemes();
         setContentView(getContentViewResId());
         ButterKnife.bind(this);
         initPresenter();
@@ -52,6 +58,11 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
     protected abstract int getContentViewResId();
 
     protected abstract void initPresenter();
+
+    private void setThemes() {
+        GankTheme.registerThemeChangedListener(this);
+        GankTheme.getInstance().setTheme(this);
+    }
 
     @Override
     protected void onRestart() {
@@ -93,6 +104,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        GankTheme.unRegisterThemeChangedListener(this);
         ButterKnife.unbind(this);
         if (null != mPresenter) {
             mPresenter.onDetach();
@@ -111,5 +123,11 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
         ab.setHomeAsUpIndicator(icon);
     }
 
+    @Override
+    public void propertyChange(PropertyChangeEvent event) {
+        if (GankConst.KEY_THEME.equals(event.getPropertyName())) {
+            recreate();
+        }
+    }
 }
 

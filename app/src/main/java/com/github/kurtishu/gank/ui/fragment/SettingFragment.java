@@ -2,10 +2,15 @@ package com.github.kurtishu.gank.ui.fragment;
 
 
 import android.os.Bundle;
+import android.preference.ListPreference;
+import android.preference.Preference;
 import android.preference.PreferenceFragment;
+import android.preference.PreferenceScreen;
 import android.support.v4.app.Fragment;
+import android.widget.Toast;
 
 import com.github.kurtishu.gank.R;
+import com.github.kurtishu.gank.model.GankTheme;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -21,5 +26,20 @@ public class SettingFragment extends PreferenceFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.preferences);
+
+        final ListPreference themePref = (ListPreference)findPreference(getString(R.string.key_theme));
+        themePref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                GankTheme.getInstance().changeTheme(String.valueOf(newValue));
+                Toast.makeText(getActivity(), "设置成功", Toast.LENGTH_SHORT).show();
+                return true;
+            }
+        });
+    }
+
+    @Override
+    public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
+        return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
 }

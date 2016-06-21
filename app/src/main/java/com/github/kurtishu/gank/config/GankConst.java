@@ -26,6 +26,7 @@ package com.github.kurtishu.gank.config;
 public class GankConst {
 
     public static final String KEY_INIT_INSTALL = "isAppFirstInstall";
+    public static final String KEY_THEME = "theme";
 
     public static final String URL_ABOUT = "file:///android_asset/about.html";
 

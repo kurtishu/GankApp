@@ -8,32 +8,37 @@
     <PreferenceCategory
         android:layout="@layout/preference_category"
         android:title="基本设置">
-        <CheckBoxPreference
-            android:key="save_net_mode"
+
+        <ListPreference
             android:layout="@layout/preference_item"
-            android:summary="仅在Wi-Fi环境下才自动加载图片"
-            android:title="省流量模式"
-            android:widgetLayout="@layout/switch_layout" />
+            android:defaultValue="light"
+            android:entries="@array/pref_theme_list_entries"
+            android:entryValues="@array/pref_theme_list_values"
+            android:key="@string/key_theme"
+            android:summary="%s"
+            android:title="@string/title_theme"
+            android:dialogTitle ="@string/title_theme" />
 
         <CheckBoxPreference
-            android:key="save_net_mode"
+            android:key="@string/key_save_net_mode"
             android:layout="@layout/preference_item"
-            android:summary="向客户端推送消息"
-            android:title="接收推送通知"
+            android:summary="@string/summary_save_net_mode"
+            android:title="@string/title_save_net_mode"
             android:widgetLayout="@layout/switch_layout" />
+
         <Preference
             android:layout="@layout/preference_item"
-            android:summary="删除已缓存的文章内容及图片"
-            android:title="清空缓存" />
+            android:summary="@string/summary_clear_cache"
+            android:title="@string/title_clear_cache" />
     </PreferenceCategory>
 
     <PreferenceCategory
         android:layout="@layout/preference_category"
-        android:title="其他说明">
+        android:title="@string/title_other">
         <Preference
             android:layout="@layout/preference_item"
             android:summary="V 1.0"
-            android:title="当前版本" />
+            android:title="@string/title_version" />
         <Preference
             android:layout="@layout/preference_item"
             android:summary="GitHub：https://github.com/kurtishu/GankApp"

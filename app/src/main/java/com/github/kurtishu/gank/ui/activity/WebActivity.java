@@ -31,9 +31,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.github.kurtishu.gank.R;
-import com.github.kurtishu.gank.db.DbHelper;
 import com.github.kurtishu.gank.manager.CollectionManager;
-import com.github.kurtishu.gank.model.entity.GankEntity;
 import com.github.kurtishu.gank.presenter.activity.WebPresenter;
 import com.github.kurtishu.gank.ui.view.activity.IWebView;
 import com.github.kurtishu.gank.wedgit.ProgressWebView;
@@ -122,5 +120,15 @@ public class WebActivity extends BaseActivity<WebPresenter> implements IWebView 
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_web, menu);
         return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (mWbContent.canGoBack()) {
+            mWbContent.goBack();
+            return;
+        }
+
+        super.onBackPressed();
     }
 }
