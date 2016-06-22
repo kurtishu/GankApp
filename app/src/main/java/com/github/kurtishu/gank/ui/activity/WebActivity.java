@@ -30,6 +30,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.github.kurtishu.gank.GankApp;
 import com.github.kurtishu.gank.R;
 import com.github.kurtishu.gank.manager.CollectionManager;
 import com.github.kurtishu.gank.presenter.activity.WebPresenter;
@@ -102,6 +103,15 @@ public class WebActivity extends BaseActivity<WebPresenter> implements IWebView 
 
                     }
                 });
+                break;
+            case R.id.action_browser:
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                startActivity(intent);
+                break;
+            case R.id.action_clip:
+                GankApp.clipData(getIntent().getStringExtra(EXTRA_URL));
+                Toast.makeText(WebActivity.this,
+                        R.string.tip_add_clip_success, Toast.LENGTH_LONG).show();
                 break;
         }
         return true;

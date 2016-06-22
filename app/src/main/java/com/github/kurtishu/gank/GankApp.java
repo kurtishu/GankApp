@@ -1,6 +1,9 @@
 package com.github.kurtishu.gank;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
+import android.net.Uri;
 import android.os.StrictMode;
 
 /**
@@ -22,5 +25,10 @@ public class GankApp extends com.activeandroid.app.Application{
 
     public static Context getContext() {
         return mContext;
+    }
+
+    public static void clipData(String url) {
+        ClipboardManager clipboardManager = (ClipboardManager) getContext().getSystemService(CLIPBOARD_SERVICE);
+        clipboardManager.setPrimaryClip(ClipData.newRawUri("url", Uri.parse(url)));
     }
 }

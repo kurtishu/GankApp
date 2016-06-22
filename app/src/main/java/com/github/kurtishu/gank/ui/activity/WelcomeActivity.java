@@ -20,11 +20,27 @@
 
 package com.github.kurtishu.gank.ui.activity;
 
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
+
 import com.github.kurtishu.gank.R;
+import com.github.kurtishu.gank.adapter.NavigatorPagerAdapter;
 import com.github.kurtishu.gank.presenter.activity.WelcomePresenter;
 import com.github.kurtishu.gank.ui.view.activity.IWelcomeView;
+import com.github.kurtishu.gank.wedgit.PagerIndicateView;
+
+import butterknife.Bind;
 
 public class WelcomeActivity extends BaseActivity<WelcomePresenter> implements IWelcomeView {
+
+
+    @Bind(R.id.nav_pager)
+    ViewPager mNavViewPager;
+
+    @Bind(R.id.indicate_view)
+    PagerIndicateView mIndicateView;
+
+    PagerAdapter mAdapter;
 
     @Override
     protected int getContentViewResId() {
@@ -39,10 +55,24 @@ public class WelcomeActivity extends BaseActivity<WelcomePresenter> implements I
     @Override
     public void initViews() {
 
-    }
+        mAdapter = new NavigatorPagerAdapter(this);
+        mNavViewPager.setAdapter(mAdapter);
+        mIndicateView.setTotalItems(mAdapter.getCount());
+        mNavViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
-    @Override
-    public void navigationToMainScreen() {
+            }
 
+            @Override
+            public void onPageSelected(int position) {
+                mIndicateView.setCurrentItem(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
     }
 }

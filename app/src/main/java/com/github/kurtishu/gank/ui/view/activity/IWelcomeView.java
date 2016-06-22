@@ -27,5 +27,4 @@ import com.github.kurtishu.gank.ui.view.IBaseView;
  */
 public interface IWelcomeView extends IBaseView {
 
-    void navigationToMainScreen();
 }

@@ -33,7 +33,7 @@ public class PagerIndicateView extends View {
 
     private int totalItems = 5;
 
-    private int currentItemIndex = 1;
+    private int currentItemIndex = 0;
 
     private Paint normalPaint = null;
     private Paint currentPaint = null;
@@ -73,14 +73,14 @@ public class PagerIndicateView extends View {
         normalPaint.setAntiAlias(true);
         normalPaint.setStyle(Paint.Style.STROKE);
         normalPaint.setStrokeWidth(DensityUtil.dip2px(context, 12));
-        normalPaint.setColor(Color.GRAY);
+        normalPaint.setColor(Color.WHITE);
         normalPaint.setStrokeCap(Paint.Cap.ROUND);
 
         currentPaint = new Paint();
         currentPaint.setAntiAlias(true);
         currentPaint.setStyle(Paint.Style.STROKE);
         currentPaint.setStrokeWidth(DensityUtil.dip2px(context, 12));
-        currentPaint.setColor(Color.BLUE);
+        currentPaint.setColor(Color.GRAY);
         currentPaint.setStrokeCap(Paint.Cap.ROUND);
     }
 

@@ -29,11 +29,13 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.github.kurtishu.gank.ui.activity.WelcomeActivity">
 
-    <android.support.v7.widget.RecyclerView
+    <android.support.v4.view.ViewPager
+        android:id="@+id/nav_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
    <com.github.kurtishu.gank.wedgit.PagerIndicateView
+       android:id="@+id/indicate_view"
        android:layout_alignParentBottom="true"
        android:layout_centerHorizontal="true"
        android:layout_width="wrap_content"

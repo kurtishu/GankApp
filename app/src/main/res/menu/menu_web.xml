@@ -21,25 +21,26 @@
   ~  */
   -->
 
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
         android:id="@+id/nav_collect"
         android:icon="@mipmap/icon_collect_no"
-        android:showAsAction="always"
+        app:showAsAction="always"
         android:title="收藏" />
     <item
         android:id="@+id/share_app"
         android:icon="@mipmap/icon_share"
-        android:showAsAction="never"
+        app:showAsAction="never"
         android:title="分享" />
     <item
-        android:showAsAction="never"
+        app:showAsAction="never"
         android:id="@+id/action_browser"
         android:title="用浏览器打开" />
     <item
-        android:showAsAction="never"
-        android:id="@+id/action_crop"
+        app:showAsAction="never"
+        android:id="@+id/action_clip"
         android:title="复制链接" />
 
 </menu>

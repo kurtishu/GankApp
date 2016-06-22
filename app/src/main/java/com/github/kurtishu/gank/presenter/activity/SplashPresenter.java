@@ -35,7 +35,7 @@ public class SplashPresenter extends BasePresenter<ISplashView> {
     }
 
     public void isAppFirstInstall() {
-        if ((Boolean) PreferenceUtil.get(GankConst.KEY_INIT_INSTALL, false)) {
+        if ((Boolean) PreferenceUtil.get(GankConst.KEY_INIT_INSTALL, true)) {
             mView.showWelcomeSceen();
         } else {
             mView.showHomeScreen();

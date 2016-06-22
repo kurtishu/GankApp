@@ -32,12 +32,13 @@
     <string name="title_setting">设置</string>
 
     <string name="tip_add_collection_success">收藏成功</string>
+    <string name="tip_add_clip_success">复制成功</string>
     <string name="tip_add_collection_fail">收藏失败，请重试！</string>
 
     <string name="nav_about">关于我</string>
 
     <string name="button_confirm">确定</string>
-
+    <string name="button_get_start">进入应用</string>
 
     <string name="title_theme">选择喜欢的主题</string>
     <string name="key_theme" translatable="false">key_theme</string>
