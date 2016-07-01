@@ -10,6 +10,7 @@ android:orientation="vertical">
     layout="@layout/layout_toolbar"/>
 
 <FrameLayout
+    android:layout_marginTop="@dimen/activity_horizontal_margin"
     android:id="@+id/content_frame"
     android:layout_width="match_parent"
     android:layout_height="match_parent" />

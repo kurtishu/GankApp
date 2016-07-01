@@ -28,4 +28,6 @@ public class GankConfig {
     public static final String API_HOST = "http://gank.io/api/";
 
     public static final int PAGE_SIZE = 15;
+
+    public static final String FILEDIR = "/gankio";
 }

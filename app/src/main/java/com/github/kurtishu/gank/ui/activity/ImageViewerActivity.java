@@ -117,6 +117,9 @@ public class ImageViewerActivity extends BaseActivity<ImageViewerPresenter> impl
                     }
                 });
                 break;
+            case R.id.download:
+                mPresenter.downloadPic(getIntent().getStringExtra("url"));
+                break;
         }
         return true;
     }

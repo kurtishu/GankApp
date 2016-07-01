@@ -31,4 +31,5 @@ public class GankApp extends com.activeandroid.app.Application{
         ClipboardManager clipboardManager = (ClipboardManager) getContext().getSystemService(CLIPBOARD_SERVICE);
         clipboardManager.setPrimaryClip(ClipData.newRawUri("url", Uri.parse(url)));
     }
+
 }
